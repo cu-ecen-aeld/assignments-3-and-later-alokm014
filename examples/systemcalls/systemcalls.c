@@ -1,4 +1,10 @@
 #include "systemcalls.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <fcntl.h>
+#include <sys/wait.h>
 
 /**
  * @param cmd the command to execute with system()
@@ -114,7 +120,8 @@ bool do_exec_redirect(const char *outputfile, int count, ...)
  *   The rest of the behaviour is same as do_exec()
  *
 */
-pid_t childpid;
+
+    pid_t childpid;
     int status;
 
     int fd = open(outputfile, O_WRONLY|O_TRUNC|O_CREAT, 0644);
@@ -145,3 +152,4 @@ pid_t childpid;
 
     return true;
 }
+
